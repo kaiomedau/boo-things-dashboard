@@ -169,7 +169,15 @@ function App() {
 
 if(collectionRedy && nftCollection){
 
-  const listItems = nftCollection.map((d) => <li key={d}><img width={"120"} src={ "https://ditothepug.com/wp-content/boo-things/" + d + ".png"} /></li>);
+  const openseaurl = "https://opensea.io/assets/matic/0xed9b49afac032401f15527c42c6c54931aa6571a/";
+  const listItems = nftCollection.map((d) => 
+    <li class={"booRank"}>
+      <a href={openseaurl+d} target={"_blank"}>
+        <img width={"120"} src={ "https://ditothepug.com/wp-content/boo-things/" + d + ".png"} />
+        <h4>Rank {d}</h4>
+        <div class={"boo-number"}>{d}</div>
+        </a>
+        </li>);
 
   return (
       <div>
@@ -180,13 +188,15 @@ if(collectionRedy && nftCollection){
 }
 
 
-
-
 return (
     <>
-      <h2>Boo Things</h2>
+      <h2>Fetching your Boo Things Collection</h2>
 
       <p>Total Boos: {parseInt(totalTokensCount)}</p>
+
+      <div class="spinner-container">
+        <div class="spinner"></div>
+      </div>
 
       { totalTokensCount > 0 ? getTokenCollection(0) : null }    
     </>
