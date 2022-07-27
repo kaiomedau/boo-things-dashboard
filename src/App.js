@@ -146,7 +146,7 @@ function App() {
       <>
         <div id="dapp" class="connect">
             <h2>
-              Boo Things
+              Boo Dashboard
             </h2>
 
             <button
@@ -180,9 +180,15 @@ if(collectionRedy && nftCollection){
         </li>);
 
   return (
+    <>
+      <h2>
+        Your Collection
+      </h2>
+
       <div>
       { listItems }
       </div>
+    </>
   );
 
 }
@@ -190,7 +196,9 @@ if(collectionRedy && nftCollection){
 
 return (
     <>
-      <h2>Fetching your Boo Things Collection</h2>
+      <h2>
+        Fetching Your Boos
+      </h2>
 
       <p>Total Boos: {parseInt(totalTokensCount)}</p>
 
