@@ -471,7 +471,7 @@ small {
   /*height: 100%;*/
   /*z-index: 99999;*/
   text-align: center;
-  border: solid red;
+  /*border: solid red;*/
 }
 .spinner {
   margin: auto;
