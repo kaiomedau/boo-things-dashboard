@@ -112,7 +112,7 @@ function App() {
   }
 
   const getData = () => {
-    if (blockchain.account !== "" && blockchain.smartContract !== null) {
+    if (blockchain.account !== "" && blockchain.account !== undefined && blockchain.smartContract !== null) {
       dispatch(fetchData(blockchain.account));
 
       // Get the balance for this wallet
@@ -141,7 +141,7 @@ function App() {
 
  
   // Check if wallet is connected
-  if(blockchain.account === "" || blockchain.smartContract === null) {
+  if(blockchain.account === "" || blockchain.account === undefined || blockchain.smartContract === null) {
     return (
       <>
         <div id="dapp" class="connect">
