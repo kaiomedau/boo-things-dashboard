@@ -431,7 +431,7 @@ small {
 
 .booRank {
   display: inline-block;
-  width: 200px;
+  width: 180px;
   background: #fff;
   border-radius: 12px;
   overflow: hidden;
@@ -440,8 +440,7 @@ small {
 }
 
 .booRank img {
-  width: 200px;
-  height: 200px;
+  width: 100%;
   display: inline-block;
 }
 

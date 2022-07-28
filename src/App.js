@@ -183,7 +183,7 @@ if(collectionRedy && nftCollection){
   const listItems = nftCollection.map((d) => 
     <li class={"booRank"} rank={ranks.indexOf(d) + 1} boo-id={d}>
       <a href={openseaurl+d} target={"_blank"}>
-        <img width={"120"} src={ "https://ditothepug.com/wp-content/boo-things/" + d + ".png"} />
+        <img src={ "https://ditothepug.com/wp-content/boo-things/" + d + ".png"} />
         <h4>Rank {ranks.indexOf(d) + 1}</h4>
         <div class={"boo-number"}>{d}</div>
         </a>
