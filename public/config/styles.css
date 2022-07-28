@@ -488,6 +488,8 @@ small {
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0px 2px 12px rgba(255, 0, 0, 0.25);
+
+  display: none;
 }
 
 #list-sorting button {
