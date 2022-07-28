@@ -21,6 +21,7 @@ function App() {
   const [nftCollection, setNftCollection] = useState("");
 
   const [counter, setCounter] = useState(0);
+  const [idBeingFetched, setIdBeingFetched] = useState(0);
   
   let fetchingBalance = false;
   let currentTokenID = -1;
@@ -83,13 +84,12 @@ function App() {
       return; 
     }
        currentTokenID = cIndex;
-
+       
     if(cIndex >= balance) {
       console.log("currentIndex > totalTokensCount");
       console.log(cIndex);
       console.log(balance);
 
-      // currentIndex = -1;
       setCounter (1);
 
       console.log(tokenCollection.length);
@@ -182,13 +182,18 @@ if(collectionRedy && nftCollection){
 
   return (
     <>
-      <h2>
-        Your Collection
-      </h2>
-
-      <div>
-      { listItems }
+    <div id="boo-things-collection">
+      <div id="collection-header">
+        <h2>
+          Your Collection
+        </h2>
+        <p>You have <strong>{parseInt(totalTokensCount)}</strong> Boo Things NFTs </p>
       </div>
+
+      <div id="collection-list">
+        { listItems }
+      </div>
+      </div> 
     </>
   );
 
@@ -197,17 +202,21 @@ if(collectionRedy && nftCollection){
 
 return (
     <>
+      <div id="boo-things-collection">
+
       <h2>
         Fetching Your Boos
       </h2>
 
-      <p>Total Boos: {parseInt(totalTokensCount)}</p>
+      <p>Collecting {parseInt(totalTokensCount)} Boos </p>
 
       <div class="spinner-container">
         <div class="spinner"></div>
       </div>
 
-      { totalTokensCount > 0 ? getTokenCollection(0) : null }    
+      { totalTokensCount > 0 ? getTokenCollection(0) : null }   
+
+      </div> 
     </>
   
   );

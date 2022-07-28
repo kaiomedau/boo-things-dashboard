@@ -278,9 +278,17 @@ button:disabled{
 }
 
 #dapp-container h2 {
+  margin-top: 14px;
   font-size: 40px;
-  margin: 14px 14px 32px 14px;
   color: #fff;
+}
+
+#collection-header {
+  margin-bottom: 32px
+}
+
+#collection-header p {
+  margin-top: 0;
 }
 
 #dapp-container h3 {
@@ -462,7 +470,9 @@ small {
   background: #ebebeb;
 }
 
-
+#boo-things-collection p {
+  color: #fff;
+}
 
 /* Spinner */
 
@@ -475,7 +485,7 @@ small {
 }
 .spinner {
   margin: auto;
-  border: 2px solid #DBDBDB; 
+  border: 2px solid #fff; 
   width: 32px;
   height: 32px;
   display: inline-block;
