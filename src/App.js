@@ -143,9 +143,16 @@ function App() {
   function sortList(ul, att) {
         var ul = document.getElementById(ul);
         Array.from(ul.getElementsByTagName("LI"))
-        .sort((a, b) => a.getAttribute(att).localeCompare(b.getAttribute(att)))
+        .sort((a, b) => {return a.getAttribute(att) - b.getAttribute(att)})
         .forEach(li => ul.appendChild(li));
   }
+
+  // function sortList(ul, att) {
+  //       var ul = document.getElementById(ul);
+  //       Array.from(ul.getElementsByTagName("LI"))
+  //       .sort((a, b) => a.getAttribute(att).localeCompare(b.getAttribute(att)))
+  //       .forEach(li => ul.appendChild(li));
+  // }
 
 
   // Check if wallet is connected
