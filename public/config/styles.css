@@ -429,7 +429,67 @@ small {
   padding: 0;
 }
 
-.booRank {
+a {
+  cursor: pointer;
+}
+
+.boo-card {
+  text-shadow: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border: solid 1px #F4F4F4;
+}
+
+.boo-card label {
+  color: #5D9AC5;
+}
+
+.card-actions {
+  text-align: center;
+  /*border: solid 1px red;*/
+}
+
+.card-action {
+  /*border: solid blue;*/
+  display: inline-block;
+  min-width: 42px;
+  margin-bottom: 7px;
+}
+
+.card-action .icon {
+  display: block;
+  height: 20px;
+  width: 20px;
+  margin: 0 auto 4px;
+
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.boo-rank {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 4px 16px;
+}
+
+.boo-power label{
+  color: #BEBEBE;
+}
+
+.boo-power .icon {
+  background-image: url(/power.svg);
+  background-size: 20px 20px;
+}
+.boo-rank .icon {
+  height: 24px;
+  width: 26px;
+  background-image: url(/rank.svg);
+}
+.boo-market .icon {
+  background-image: url(/sell.svg);
+}
+
+
+.booRank, .boo-card {
   display: inline-block;
   width: 180px;
   background: #fff;
@@ -439,9 +499,10 @@ small {
   margin-bottom: 40px;
 }
 
-.booRank img {
-  width: 100%;
-  display: inline-block;
+.booRank img, .boo-card img {
+  width: 162px;
+  border-radius: 8px;
+  border: solid 2px #F4F4F4;
 }
 
 .booRank h4 {
@@ -453,12 +514,13 @@ small {
   font-size: 18px;
 }
 
-.booRank .boo-number {
-  display: inline-block;
-  float: right;
-  font-size: 18px;
-  color: black;
-  margin: 10px 16px 20px 0;
+.boo-card .boo-number {
+  color: #5D9AC5;
+  font-size: 16px;
+  text-transform: uppercase;
+  text-align: center;
+  font-weight: bold;
+  margin: 14px 16px 8px
 }
 
 #pagination li {
@@ -481,8 +543,8 @@ small {
   /*color: #fff;*/
   background: #fff;
   border-radius: 20px;
-  padding: 20px 40px;
-  min-width: 220px;
+  padding: 14px 32px;
+  min-width: 200px;
   position: fixed;
   bottom: 20px;
   left: 50%;
