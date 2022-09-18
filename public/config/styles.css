@@ -566,6 +566,22 @@ a {
   background-color: #5FBEFF;
 }
 
+.image-wrapper {
+  position: relative;
+}
+
+.download {
+  display: block;
+  border: solid 1px white;
+  border-radius: 4px;
+  width: 32px;
+  height: 32px;
+  position: absolute;
+  bottom: 12px;
+  right: 14px;
+  background: no-repeat center url(/download.svg) rgba(0, 0, 0, 0.2);
+  background-size: 16px;
+}
 
 /* Spinner */
 

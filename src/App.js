@@ -30,6 +30,7 @@ function App() {
   
   const [CONFIG, SET_CONFIG] = useState({
     CONTRACT_ADDRESS: "",
+    CONTRACT_ADDRESS2:"",
     SCAN_LINK: "",
     NETWORK: {
       NAME: "",
@@ -191,7 +192,12 @@ if(collectionRedy && nftCollection){
       <a href={openseaurl+d} target={"_blank"}>
         <div class="boo-number">Boo Things #{d}</div>
       </a>
-      <img src={ "https://ditothepug.com/wp-content/boo-things/" + d + ".png"} />
+      <div class="image-wrapper">
+        <a href={ "https://ditothepug.com/wp-content/boo-things-1200/" + d + ".png"} alt={"Download the 1200px image of Boo #" + d} title={"Download the 1200px image of Boo #" + d} target="_blank" download={"Boo Things #" + d +"-1200.png"}>
+          <div class={"download"}></div>
+        </a>
+        <img src={ "https://ditothepug.com/wp-content/boo-things/" + d + ".png"} />
+      </div>
       <div class={"card-actions"}>
         <div class={"card-action boo-power"} title={"Combat Power - Soon"}>
           <div  class={"icon"}></div>
