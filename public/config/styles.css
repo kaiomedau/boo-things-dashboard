@@ -170,17 +170,6 @@ button:disabled{
   margin: 40px auto 0px;
 }
 
-.hero {
-  /*margin-top: 40px;*/
-  /*margin-bottom: 80px;*/
-  /*position: absolute;*/
-  /*top: 50%;*/
-  /*-ms-transform: translateY(-50%);*/
-  /*transform: translateY(-50%);*/
-  /*width: 100%;*/
-  /*overflow: visible;*/
-}
-
 .hero h4 {
   margin-top: 40px;
 }
@@ -403,6 +392,7 @@ small {
 .bottom_margin {
   margin-bottom: 20px;
 }
+
 .bottom_margin a:hover {
   text-decoration: underline;
 }
@@ -421,7 +411,6 @@ small {
 #contract a:hover {
   text-decoration: underline;
 }
-
 
 #boos-rank, #pagination {
   list-style: none;
@@ -445,11 +434,9 @@ a {
 
 .card-actions {
   text-align: center;
-  /*border: solid 1px red;*/
 }
 
 .card-action {
-  /*border: solid blue;*/
   display: inline-block;
   min-width: 42px;
   margin-bottom: 7px;
@@ -550,6 +537,7 @@ a {
   left: 50%;
   transform: translateX(-50%);
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.35);
+  z-index: 1000;
 }
 
 #list-sorting button {
@@ -584,13 +572,8 @@ a {
 }
 
 /* Spinner */
-
 .spinner-container {
-  /*width: 100%;*/
-  /*height: 100%;*/
-  /*z-index: 99999;*/
   text-align: center;
-  /*border: solid red;*/
 }
 .spinner {
   margin: auto;
@@ -624,11 +607,6 @@ a {
     width: 95%;
   }
 
-  .round_button {
-    font-size: 24px;
-    padding: 20px 32px;
-  }
-
   .content, header {
     margin-left: 20px;
     margin-right: 20px;
@@ -637,42 +615,10 @@ a {
     width: auto;
   }
 
-  .question {
-    width: auto;
-  }
-
-  #dapp-container, .question p {
+  #dapp-container {
     margin-left: 10px;
     margin-right: 10px;
   }
 } 
 
-@media only screen and (max-height: 450px) {
-  .round_button {
-    display: none;
-  } 
-}
 
-@keyframes slide {
-  0% {
-    transform: translatex(0);
-  }
-  50% {
-    transform: translatex(-41%);
-  }
-  100% {
-    transform: translatex(0);
-  }
-}
-
-@keyframes float {
-  0% {
-    transform: translatey(0px);
-  }
-  50% {
-    transform: translatey(-10px);
-  }
-  100% {
-    transform: translatey(0px);
-  }
-}
