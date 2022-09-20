@@ -458,10 +458,6 @@ a {
   margin: 4px 16px;
 }
 
-.boo-power label{
-  color: #BEBEBE;
-}
-
 .boo-power .icon {
   background-image: url(/images/power.svg);
   background-size: 20px 20px;
