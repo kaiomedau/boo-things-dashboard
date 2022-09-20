@@ -147,7 +147,7 @@ button:disabled{
   width:120px;
   height:54px;
   margin: 10px 0;
-  background-image:url("../../logo_ent_dados_asset_10_3x_1.png");
+  background-image:url("/images/boo-things-logo.png");
   background-repeat:no-repeat;
   background-size:120px;
   float: left;
@@ -476,16 +476,16 @@ a {
 }
 
 .boo-power .icon {
-  background-image: url(/power.svg);
+  background-image: url(/images/power.svg);
   background-size: 20px 20px;
 }
 .boo-rank .icon {
   height: 24px;
   width: 26px;
-  background-image: url(/rank.svg);
+  background-image: url(/images/rank.svg);
 }
 .boo-market .icon {
-  background-image: url(/sell.svg);
+  background-image: url(/images/sell.svg);
 }
 
 
@@ -579,7 +579,7 @@ a {
   position: absolute;
   bottom: 12px;
   right: 14px;
-  background: no-repeat center url(/download.svg) rgba(0, 0, 0, 0.2);
+  background: no-repeat center url(/images/download.svg) rgba(0, 0, 0, 0.2);
   background-size: 16px;
 }
 
