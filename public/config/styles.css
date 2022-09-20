@@ -571,6 +571,12 @@ a {
   background-size: 16px;
 }
 
+.summon-gladiator {
+    border-radius: 0 !important;
+    font-size: 16px;
+    height: 40px;
+}
+
 /* Spinner */
 .spinner-container {
   text-align: center;

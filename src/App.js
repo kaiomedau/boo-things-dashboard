@@ -214,6 +214,7 @@ if(collectionRedy && nftCollection){
           </div>
         </a>
       </div>
+      <button class="summon-gladiator" disabled title="Coming Soon!">Summon Gladiator</button>
     </li>);
 
 
