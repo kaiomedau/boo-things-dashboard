@@ -29,8 +29,8 @@ function App() {
 
   
   const [CONFIG, SET_CONFIG] = useState({
-    CONTRACT_ADDRESS: "",
-    CONTRACT_ADDRESS2:"",
+    BOO_ADDRESS: "",
+    GLADIATOR_ADDRESS:"",
     SCAN_LINK: "",
     NETWORK: {
       NAME: "",
@@ -62,11 +62,7 @@ function App() {
   }
 
   const getTokenCollection = (currentIndex) => {
-    if(currentIndex == undefined) {
-      // console.log("getTokenCollection()");
-      // console.log("Undefined");
-      return;
-    }
+    if(currentIndex == undefined) { return; }
 
     if(totalTokensCount == 0){
       // console.log("totalTokensCount == 0");
@@ -76,10 +72,6 @@ function App() {
     let cIndex = parseInt(currentIndex);
     let balance = parseInt(totalTokensCount);
 
-    // console.log("getTokenCollection()");
-    // console.log(currentIndex);
-    // console.log(currentTokenID);
-
     if(currentTokenID == cIndex) { 
       console.log("currentTokenID == currentIndex");
       return; 
@@ -87,15 +79,10 @@ function App() {
        currentTokenID = cIndex;
        
     if(cIndex >= balance) {
-      // console.log("currentIndex > totalTokensCount");
-      // console.log(cIndex);
-      // console.log(balance);
-
       setCounter (1);
 
-      // console.log(tokenCollection.length);
-
       setCollectionRedy (true);
+      
       setNftCollection(tokenCollection);
 
       return;
@@ -148,32 +135,20 @@ function App() {
         .forEach(li => ul.appendChild(li));
   }
 
-  // function sortList(ul, att) {
-  //       var ul = document.getElementById(ul);
-  //       Array.from(ul.getElementsByTagName("LI"))
-  //       .sort((a, b) => a.getAttribute(att).localeCompare(b.getAttribute(att)))
-  //       .forEach(li => ul.appendChild(li));
-  // }
-
-
+ 
   // Check if wallet is connected
   if(blockchain.account === "" || blockchain.account === undefined || blockchain.smartContract === null) {
     return (
       <>
         <div id="dapp" class="connect">
-            <h2>
-              Boo Dashboard
-            </h2>
-
-            <button
-              onClick={(e) => {
+            
+            <h2>Boo Dashboard</h2>
+            <button onClick={(e) => {
                 e.preventDefault();
                 dispatch(connect());
                 getData();
-              }}
-            >
-              Connect your wallet
-            </button>
+              }}>Connect your wallet</button>
+        
         </div>
 
         {blockchain.errorMsg !== "" ?(<><div class="warning-message">{blockchain.errorMsg}</div></>):null}
@@ -182,6 +157,21 @@ function App() {
       </>
     );
   }
+
+
+if(totalTokensCount == 0) {
+  return (
+    <>
+      <div id="boo-things-collection">
+        <div id="collection-header">
+          <h2>Your Collection</h2>
+          <p><strong>No SOUP</strong> for you</p>
+        </div>
+      </div> 
+    </>
+  );
+}
+
 
 if(collectionRedy && nftCollection){
 

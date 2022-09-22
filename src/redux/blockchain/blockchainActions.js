@@ -34,13 +34,21 @@ const updateAccountRequest = (payload) => {
 export const connect = () => {
   return async (dispatch) => {
     dispatch(connectRequest());
-    const abiResponse = await fetch("/config/abi.json", {
+    
+    const abiBooResponse = await fetch("/config/abi-boo.json", {
       headers: {
         "Content-Type": "application/json",
         Accept: "application/json",
       },
     });
-    const abi = await abiResponse.json();
+    const abiGladiatorResponse = await fetch("/config/abi-gladiator.json", {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+      },
+    });
+    const abiBoo = await abiBooResponse.json();
+    
     const configResponse = await fetch("/config/config.json", {
       headers: {
         "Content-Type": "application/json",
@@ -62,8 +70,8 @@ export const connect = () => {
         });
         if (networkId == CONFIG.NETWORK.ID) {
           const SmartContractObj = new Web3EthContract(
-            abi,
-            CONFIG.CONTRACT_ADDRESS
+            abiBoo,
+            CONFIG.BOO_ADDRESS
           );
           dispatch(
             connectSuccess({
