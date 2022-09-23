@@ -1,8 +1,7 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { connect } from "./redux/blockchain/blockchainActions";
 import { fetchData } from "./redux/data/dataActions";
-import Web3B from "web3";
 
 const truncate = (input, len) =>
   input.length > len ? `${input.substring(0, len)}...` : input;
@@ -28,8 +27,11 @@ function App() {
   const [counter, setCounter] = useState(0);
   const [gladCounter, setGladCounter] = useState(0);
 
-
   const [idBeingFetched, setIdBeingFetched] = useState(0);
+
+  const [itemsApproved, setItemsApproved] = useState(false);
+  const [booApproved, setBooApproved] = useState(false);
+
   
   let fetchingBalance = false;
   let currentTokenID = -1;
@@ -288,12 +290,15 @@ if(collectionRedy && nftCollection){
     <>
     <div id="boo-things-collection">
       <div id="collection-header">
-        <h2>
-          Your Collection
-        </h2>
+        <h2>Your Collection</h2>
         <p>You have <strong>{parseInt(totalTokensCount)}</strong> Boo Things NFTs and <strong>{parseInt(totalGladTokensCount)} wake Gladiator</strong></p>
-
       </div>
+
+      <div id="mint-actions">
+        <button>Get Items Pack</button>
+        <button>Mint Boo</button>
+      </div>
+
 
       <div id="collection-glad-list">
         { listGladItems }
