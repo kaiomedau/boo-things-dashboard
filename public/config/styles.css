@@ -480,10 +480,6 @@ a {
   margin-bottom: 40px;
 }
 
-.boo-card.gladiator {
-  background:#FFE1BD;
-}
-
 .booRank img, .boo-card img {
   width: 162px;
   border-radius: 8px;
@@ -505,7 +501,7 @@ a {
   text-transform: uppercase;
   text-align: center;
   font-weight: bold;
-  margin: 14px 16px 8px
+  margin: 12px 16px 8px
 }
 
 #pagination li {
@@ -537,8 +533,6 @@ a {
   box-shadow: 0px 2px 12px rgba(0, 0, 0, 0.35);
   z-index: 1000;
 }
-
-gladiator
 
 #list-sorting button {
   height: auto;
@@ -576,6 +570,83 @@ gladiator
     font-size: 16px;
     height: 40px;
 }
+
+.boo-card.gladiator {
+  background:#FFE1BD;
+  position: relative;
+  min-height: 222px;
+  width: 246px;
+}
+
+.gladiator .image-wrapper {
+  width: 166px;
+  height: 166px;
+  margin: auto;
+}
+
+.xpbar {
+  height: 8px;
+  border: solid 1px;
+}
+.xpbar.base {
+  width: 160px;
+  background-color: #c0c0c0;
+  border-radius: 8px;
+  margin: 2px auto;
+}
+.xpbar.current {
+  background-color: #3bd0ff;
+}
+
+.attributes {
+  margin: 8px auto;
+}
+
+.attributes .att{
+  display: inline-block;
+  margin: 0 4px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.main_attributes {
+
+}
+.main_attributes .att {
+
+}
+
+.minor_attributes {
+  font-size: 10px;
+}
+.minor_attributes .att {
+
+}
+
+.column {
+  /*border: solid red;*/
+  width: 32px;
+  position: absolute;
+  top: 2px;
+  overflow: visible;
+}
+
+.left {
+  left: 2px;
+}
+.right {
+  right: 5px;
+}
+
+.gearItem {
+  /*display: inline-block;*/
+  border: solid white;
+  border-radius: 8px;
+  width: 32px;
+  height: 32px;
+  margin: 1px 0;
+}
+
 
 /* Spinner */
 .spinner-container {

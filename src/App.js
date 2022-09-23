@@ -61,7 +61,8 @@ function App() {
     RING_RIGHT    :8,
     WAIST         :9,
     LEGS          :10,
-    FEET          :11
+    FEET          :11,
+    PET           :12
   }
   
   const removefeedback = () => {
@@ -235,25 +236,45 @@ if(collectionRedy && nftCollection){
         <div class="boo-number">Gladiator #{d}</div>
       </a>
       <div class="image-wrapper">
-        <a href={ "https://ditothepug.com/wp-content/boo-things-1200/" + d + ".png"} alt={"Download the 1200px image of Boo #" + d} title={"Download the 1200px image of Boo #" + d} target="_blank" download={"Boo Things #" + d +"-1200.png"}>
-          <div class={"download"}></div>
-        </a>
         <img src={ "https://ditothepug.com/wp-content/boo-things/" + d + ".png"} />
       </div>
       
-      <ul>
-        <li class="gearItem HEAD"></li>
-        <li class="gearItem TRINKET_LEFT"></li>
-        <li class="gearItem TRINKET_RIGHT"></li>
-        <li class="gearItem NECK"></li>
-        <li class="gearItem CHEST"></li>
-        <li class="gearItem HANDS"></li>
-        <li class="gearItem RING_LEFT"></li>
-        <li class="gearItem RING_RIGHT"></li>
-        <li class="gearItem WAIST"></li>
-        <li class="gearItem LEGS"></li>
-        <li class="gearItem FEET"></li>
-      </ul>
+      <div class="xpbar base">
+          <div class="xpbar current" style={{width:"50%"}} title="300 XP"></div>
+      </div>
+      
+      <div class="attributes">
+        <div class="main_attributes">
+          <div class="att" title="Health Points"><strong>❤️ HP:</strong> 120</div>
+          <div class="att" title="Power"><strong>👊 POWER:</strong> 40</div>
+        </div>
+        <div class="minor_attributes">
+          <div class="att" title="Stamina"><strong>🔋 Sta:</strong> 10</div>
+          <div class="att" title="Intellect"><strong>🧠 Int:</strong> 10</div>
+          <div class="att" title="Strenght"><strong>💪 Str:</strong> 10</div>
+          <div class="att" title="Defense"><strong>🛡 Def:</strong> 10</div>
+        </div>
+      </div>
+      
+      <div class="gearItems">
+        <div class="column left">
+          <div class="gearItem HEAD"></div>
+          <div class="gearItem TRINKET_LEFT"></div>
+          <div class="gearItem TRINKET_RIGHT"></div>
+          <div class="gearItem NECK"></div>
+          <div class="gearItem CHEST"></div>
+          <div class="gearItem HANDS"></div>
+        </div>
+        <div class="column right">
+          <div class="gearItem RING_LEFT"></div>
+          <div class="gearItem RING_RIGHT"></div>
+          <div class="gearItem WAIST"></div>
+          <div class="gearItem LEGS"></div>
+          <div class="gearItem FEET"></div>
+          <div class="gearItem PET"></div>
+        </div>
+      </div>
+      
     </li>);
 
 
