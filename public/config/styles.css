@@ -584,9 +584,19 @@ a {
   margin: auto;
 }
 
+.gladiator .toolbar button {
+  margin-top: 10px;
+  height: 32px;
+  display: inline-block !important;
+  width: 50% !important;
+  font-size: 14px;
+  border-radius: 0 !important;
+}
+
 .xpbar {
   height: 8px;
   border: solid 1px;
+  position: relative;
 }
 .xpbar.base {
   width: 160px;
@@ -596,6 +606,14 @@ a {
 }
 .xpbar.current {
   background-color: #3bd0ff;
+}
+.xpbar.pendent {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: red;
+  height: 4px;
+  border: none;
 }
 
 .attributes {
@@ -625,7 +643,7 @@ a {
 
 .column {
   /*border: solid red;*/
-  width: 32px;
+  /*width: 32px;*/
   position: absolute;
   top: 2px;
   overflow: visible;
@@ -635,17 +653,60 @@ a {
   left: 2px;
 }
 .right {
-  right: 5px;
+  right: 2px;
 }
 
 .gearItem {
   /*display: inline-block;*/
   border: solid white;
   border-radius: 8px;
-  width: 32px;
-  height: 32px;
-  margin: 1px 0;
+  width: 28px;
+  height: 28px;
+  margin: 2px 0;
+  background-size: 24px;
+  background-repeat: no-repeat;
+  background-position: center;
 }
+
+.gearItem.unavailable {
+  background-color: #e8e8e8;
+  border-color: #e0e0e0;
+  opacity: 0.7;
+}
+
+.HEAD { 
+  background-image: url(/images/gladiator/head.svg);
+}
+.TRINKET_LEFT, .TRINKET_RIGHT {
+  background-image: url(/images/gladiator/trinket.svg);
+}
+.NECK {
+  background-image: url(/images/gladiator/neck.svg);
+}
+.CHEST {
+  background-image: url(/images/gladiator/chest.svg);
+}
+.HANDS {
+  background-image: url(/images/gladiator/hand.svg);
+}       
+.RING_LEFT, .RING_RIGHT {
+  background-image: url(/images/gladiator/ring.svg);
+}
+.WAIST {
+   background-image: url(/images/gladiator/waist.svg);
+}
+.LEGS {
+   background-image: url(/images/gladiator/legs.svg);
+}
+.FEET {
+   background-image: url(/images/gladiator/feet.svg);
+}
+.PET {
+   background-image: url(/images/gladiator/pet.svg);
+}
+
+
+
 
 
 /* Spinner */

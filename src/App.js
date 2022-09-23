@@ -241,6 +241,7 @@ if(collectionRedy && nftCollection){
       
       <div class="xpbar base">
           <div class="xpbar current" style={{width:"50%"}} title="300 XP"></div>
+          <div class="xpbar pendent" style={{width:"60%"}} title="300 XP to collect"></div>
       </div>
       
       <div class="attributes">
@@ -259,22 +260,26 @@ if(collectionRedy && nftCollection){
       <div class="gearItems">
         <div class="column left">
           <div class="gearItem HEAD"></div>
-          <div class="gearItem TRINKET_LEFT"></div>
-          <div class="gearItem TRINKET_RIGHT"></div>
           <div class="gearItem NECK"></div>
           <div class="gearItem CHEST"></div>
-          <div class="gearItem HANDS"></div>
+          <div class="gearItem WAIST"></div>
+          <div class="gearItem unavailable LEGS"></div>
+          <div class="gearItem unavailable FEET"></div>
         </div>
         <div class="column right">
+          <div class="gearItem HANDS"></div>
+          <div class="gearItem TRINKET_LEFT"></div>
+          <div class="gearItem TRINKET_RIGHT"></div>
           <div class="gearItem RING_LEFT"></div>
           <div class="gearItem RING_RIGHT"></div>
-          <div class="gearItem WAIST"></div>
-          <div class="gearItem LEGS"></div>
-          <div class="gearItem FEET"></div>
-          <div class="gearItem PET"></div>
+          <div class="gearItem unavailable PET"></div>
         </div>
       </div>
       
+      <div class="toolbar">
+        <button>Collect XP</button>
+        <button>Dismiss</button>
+      </div>
     </li>);
 
 
