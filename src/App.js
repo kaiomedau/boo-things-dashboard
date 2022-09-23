@@ -17,15 +17,25 @@ function App() {
   const [successFeedback, setSuccessFeedback] = useState(``);
 
   const [collectionRedy, setCollectionRedy] = useState(false);
+  const [collectionGladRedy, setCollectionGladRedy] = useState(false);
+  
   const [totalTokensCount , setTotalTokensCount] = useState(0);  
+  const [totalGladTokensCount , setTotalGladTokensCount] = useState(0);  
+  
   const [nftCollection, setNftCollection] = useState("");
+  const [nftGladCollection, setNftGladCollection] = useState([]);
 
   const [counter, setCounter] = useState(0);
+  const [gladCounter, setGladCounter] = useState(0);
+
+
   const [idBeingFetched, setIdBeingFetched] = useState(0);
   
   let fetchingBalance = false;
   let currentTokenID = -1;
+  let currentGladTokenID = -1;
   let tokenCollection = [];
+  let tokenGladCollection = [];
 
   
   const [CONFIG, SET_CONFIG] = useState({
@@ -39,6 +49,20 @@ function App() {
     },
   });
 
+  const GearSlots = {
+    NONE          :0,
+    HEAD          :1,
+    TRINKET_LEFT  :2,
+    TRINKET_RIGHT :3,
+    NECK          :4,
+    CHEST         :5,
+    HANDS         :6,
+    RING_LEFT     :7,
+    RING_RIGHT    :8,
+    WAIST         :9,
+    LEGS          :10,
+    FEET          :11
+  }
   
   const removefeedback = () => {
     setTimeout(function(){ 
@@ -51,23 +75,21 @@ function App() {
     if(fetchingBalance) { return; }
     fetchingBalance = true;
 
-    // console.log ("getTokensCount()");
-
     blockchain.smartContract.methods.balanceOf(blockchain.account).call().then((receipt) => {
       setTotalTokensCount (receipt);
-      // console.log(receipt);
-
       fetchingBalance = false;
+    });
+
+    blockchain.smartContractGlad.methods.balanceOf(blockchain.account).call().then((receipt) => {
+      console.log("Gladiator count:" + receipt);
+      setTotalGladTokensCount (receipt);
     });
   }
 
   const getTokenCollection = (currentIndex) => {
+    
     if(currentIndex == undefined) { return; }
-
-    if(totalTokensCount == 0){
-      // console.log("totalTokensCount == 0");
-      return;
-    }
+    if(totalTokensCount == 0){ return; }
 
     let cIndex = parseInt(currentIndex);
     let balance = parseInt(totalTokensCount);
@@ -88,19 +110,41 @@ function App() {
       return;
     }
 
-    // console.log("blockchain call");
-
     blockchain.smartContract.methods.tokenOfOwnerByIndex(blockchain.account, cIndex).call().then((receipt) => {
-       // console.log(receipt);
        tokenCollection[cIndex] = receipt;
-       // console.log(tokenCollection);
-
        getTokenCollection(cIndex + 1);
+    });    
+  }
+
+  const getGladCollection = (currentIndex) => {
+    
+    if(currentIndex == undefined) { return; }
+    if(totalGladTokensCount == 0){ return; }
+
+    let cIndex = parseInt(currentIndex);
+    let balance = parseInt(totalGladTokensCount);
+
+    if(currentGladTokenID == cIndex) { 
+      console.log("currentGladTokenID == currentIndex");
+      return; 
+    }
+       currentGladTokenID = cIndex;
+       
+    if(cIndex >= balance) {
+      setGladCounter (1);
+      setNftGladCollection(tokenGladCollection);
+      return;
+    }
+
+    blockchain.smartContractGlad.methods.tokenOfOwnerByIndex(blockchain.account, cIndex).call().then((receipt) => {
+       tokenGladCollection[cIndex] = receipt;
+       getGladCollection(cIndex + 1);
     });    
   }
 
   const getData = () => {
     if (blockchain.account !== "" && blockchain.account !== undefined && blockchain.smartContract !== null) {
+      
       dispatch(fetchData(blockchain.account));
 
       // Get the balance for this wallet
@@ -110,23 +154,14 @@ function App() {
 
   const getConfig = async () => {
     const configResponse = await fetch("/config/config.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
+      headers: { "Content-Type": "application/json", Accept: "application/json",},
     });
     const config = await configResponse.json();
     SET_CONFIG(config);
   };
 
-  useEffect(() => {
-    getConfig();
-  }, []);
-
-  useEffect(() => {
-    getData();
-  }, [blockchain.account]);
-
+  useEffect(() => { getConfig(); }, []);
+  useEffect(() => { getData(); }, [blockchain.account]);
 
   function sortList(ul, att) {
         var ul = document.getElementById(ul);
@@ -135,7 +170,7 @@ function App() {
         .forEach(li => ul.appendChild(li));
   }
 
- 
+  
   // Check if wallet is connected
   if(blockchain.account === "" || blockchain.account === undefined || blockchain.smartContract === null) {
     return (
@@ -157,20 +192,6 @@ function App() {
       </>
     );
   }
-
-
-if(totalTokensCount == 0) {
-  return (
-    <>
-      <div id="boo-things-collection">
-        <div id="collection-header">
-          <h2>Your Collection</h2>
-          <p><strong>No SOUP</strong> for you</p>
-        </div>
-      </div> 
-    </>
-  );
-}
 
 
 if(collectionRedy && nftCollection){
@@ -205,27 +226,52 @@ if(collectionRedy && nftCollection){
           </div>
         </a>
       </div>
-      <button class="summon-gladiator" disabled title="Coming Soon!">Summon Gladiator</button>
+      <button class="summon-gladiator">Summon Gladiator</button>
+    </li>);
+
+    const listGladItems = nftGladCollection.map((d) => 
+    <li class={"boo-card gladiator"} rank={ranks.indexOf(d) + 1} boo-id={d}>
+      <a href={openseaurl+d} target={"_blank"}>
+        <div class="boo-number">Gladiator #{d}</div>
+      </a>
+      <div class="image-wrapper">
+        <a href={ "https://ditothepug.com/wp-content/boo-things-1200/" + d + ".png"} alt={"Download the 1200px image of Boo #" + d} title={"Download the 1200px image of Boo #" + d} target="_blank" download={"Boo Things #" + d +"-1200.png"}>
+          <div class={"download"}></div>
+        </a>
+        <img src={ "https://ditothepug.com/wp-content/boo-things/" + d + ".png"} />
+      </div>
+      
+      <ul>
+        <li class="gearItem HEAD"></li>
+        <li class="gearItem TRINKET_LEFT"></li>
+        <li class="gearItem TRINKET_RIGHT"></li>
+        <li class="gearItem NECK"></li>
+        <li class="gearItem CHEST"></li>
+        <li class="gearItem HANDS"></li>
+        <li class="gearItem RING_LEFT"></li>
+        <li class="gearItem RING_RIGHT"></li>
+        <li class="gearItem WAIST"></li>
+        <li class="gearItem LEGS"></li>
+        <li class="gearItem FEET"></li>
+      </ul>
     </li>);
 
 
   return (
+
     <>
     <div id="boo-things-collection">
       <div id="collection-header">
         <h2>
           Your Collection
         </h2>
-        <p>You have <strong>{parseInt(totalTokensCount)}</strong> Boo Things NFTs </p>
-
-        <div id="list-sorting">
-          <label>Sort by:</label>
-          <button onClick={() => sortList('collection-list', 'rank')}>Rank</button>
-          <button onClick={() => sortList('collection-list', 'boo-id')}>ID</button>
-        </div>
+        <p>You have <strong>{parseInt(totalTokensCount)}</strong> Boo Things NFTs and <strong>{parseInt(totalGladTokensCount)} wake Gladiator</strong></p>
 
       </div>
 
+      <div id="collection-glad-list">
+        { listGladItems }
+      </div>
       <div id="collection-list">
         { listItems }
       </div>
@@ -250,7 +296,8 @@ return (
         <div class="spinner"></div>
       </div>
 
-      { totalTokensCount > 0 ? getTokenCollection(0) : null }   
+      { totalTokensCount > 0 ? getTokenCollection(0) : null } 
+      { totalGladTokensCount > 0 ? getGladCollection(0) : null }   
 
       </div> 
     </>

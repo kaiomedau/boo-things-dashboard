@@ -36,57 +36,53 @@ export const connect = () => {
     dispatch(connectRequest());
     
     const abiBooResponse = await fetch("/config/abi-boo.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
+      headers: { "Content-Type": "application/json", Accept: "application/json", },
     });
+    
     const abiGladiatorResponse = await fetch("/config/abi-gladiator.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
+      headers: { "Content-Type": "application/json", Accept: "application/json", },
     });
     const abiBoo = await abiBooResponse.json();
+    const abiGladiator = await abiGladiatorResponse.json();
     
     const configResponse = await fetch("/config/config.json", {
-      headers: {
-        "Content-Type": "application/json",
-        Accept: "application/json",
-      },
+      headers: { "Content-Type": "application/json", Accept: "application/json", },
     });
+
     const CONFIG = await configResponse.json();
+    
     const { ethereum } = window;
+    
     const metamaskIsInstalled = ethereum && ethereum.isMetaMask;
+    
     if (metamaskIsInstalled) {
+      
       Web3EthContract.setProvider(ethereum);
+      
       let web3 = new Web3(ethereum);
+      
       try {
-        const accounts = await ethereum.request({
-          method: "eth_requestAccounts",
-        });
-        const networkId = await ethereum.request({
-          method: "net_version",
-        });
+        const accounts = await ethereum.request({ method: "eth_requestAccounts", });
+        const networkId = await ethereum.request({ method: "net_version", });
+        
         if (networkId == CONFIG.NETWORK.ID) {
-          const SmartContractObj = new Web3EthContract(
-            abiBoo,
-            CONFIG.BOO_ADDRESS
-          );
+        
+          const SmartContractObjBoo     = new Web3EthContract( abiBoo, CONFIG.BOO_ADDRESS );
+          const SmartContractObjGlad    = new Web3EthContract( abiGladiator, CONFIG.GLADIATOR_ADDRESS );
+          
           dispatch(
             connectSuccess({
               account: accounts[0],
-              smartContract: SmartContractObj,
+              smartContract: SmartContractObjBoo,
+              smartContractGlad: SmartContractObjGlad,
               web3: web3,
             })
           );
+          
           // Add listeners start
-          ethereum.on("accountsChanged", (accounts) => {
-            dispatch(updateAccount(accounts[0]));
-          });
-          ethereum.on("chainChanged", () => {
-            window.location.reload();
-          });
+          ethereum.on("accountsChanged", (accounts) => { dispatch(updateAccount(accounts[0])); });
+          ethereum.on("chainChanged", () => { window.location.reload(); });
+
           // Add listeners end
         } else {
           dispatch(connectFailed(`Change network to ${CONFIG.NETWORK.NAME}.`));
